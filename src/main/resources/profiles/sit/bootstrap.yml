@@ -1,0 +1,27 @@
+start:
+  nacos:
+    ip: 192.168.15.128
+    port: 8848
+    group: ${spring.application.name}
+    namespace: ${spring.profiles.active}
+server:
+  port: 8881
+  servlet:
+    context-path: /xdx-note-gateway
+spring:
+  application:
+    name: xdx-note-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${start.nacos.ip}:${start.nacos.port}
+        username: nacos
+        password: nacos
+      config:
+        server-addr: ${start.nacos.ip}:${start.nacos.port}
+        namespace: ${start.nacos.namespace}
+        group: ${start.nacos.group}
+        file-extension: yml
+
